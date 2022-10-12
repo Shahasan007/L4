@@ -1,0 +1,42 @@
+void cc(unsigned char i);
+void ca(unsigned char i);
+
+void cc(unsigned char i){
+	Bits2_PutVal(i);
+}
+void ca(unsigned char i){
+	i=~i;
+	Bits1_PutVal(i);
+	
+}
+
+/*lint -save  -e970 Disable MISRA rule (6.3) checking. */
+int main(void)
+
+/*lint -restore Enable MISRA rule (6.3) checking. */
+{
+  /* Write your local variable definition here */
+
+
+int j;
+
+  /*** Processor Expert internal initialization. DON'T REMOVE THIS CODE!!! ***/
+  PE_low_level_init();
+  /*** End of Processor Expert internal initialization.                    ***/
+unsigned char i;
+
+ while(1)
+ { 
+	 for(i=0x8;i>0;i=i>>1)
+	 {
+		 ca(i);
+		 for(j=0;j<0x100fff;j++);
+	
+		 }
+	 
+	 
+	 for(i=0x8;i>0;i=i>>1){
+	 cc(i);
+	 		 for(j=0;j<0x100fff;j++);
+	 }
+	
